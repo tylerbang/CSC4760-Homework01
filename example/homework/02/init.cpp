@@ -21,7 +21,7 @@ int main(int argc, char* argv[]) {
 
   Kokkos::parallel_for("PrintView", n, KOKKOS_LAMBDA (const int i) {
     for (int j = 0; j < m; j++) {
-      printf("woah(%d,%d) = %f\n", i, j, woah(i,j));
+      printf("woah(%d,%d) = %d\n", i, j, woah(i,j));
     }
   });
   }
