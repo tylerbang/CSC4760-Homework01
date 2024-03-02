@@ -7,7 +7,7 @@ int main(int argc, char* argv[]) {
   Kokkos::initialize(argc, argv);
   {
   // set n and m, you can change these values
-  int n,m = 32;
+  int n,m = 16;
   // Make View
   Kokkos::View<double**> woah("woah", n, m);
   // set values to 1000 * i * j;
