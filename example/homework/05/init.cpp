@@ -4,8 +4,8 @@
 // Create a program that compares a parallel for loop and a standard for loop for summing rows of a View with Kokkos Timer.
 
 int main(int argc, char* argv[]) {
-  const int n = 100000;
-  const int m = 100000;
+  const int n = 10000;
+  const int m = 10000;
   Kokkos::initialize(argc, argv);
   {
   // Make View and create values
