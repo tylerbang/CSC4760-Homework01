@@ -1,5 +1,6 @@
 #include <Kokkos_Core.hpp>
 #include <cstdio>
+#include <iostream>
 
 // Problem: Make an n ∗ m View where each index equals 1000 ∗ i ∗ j
 
@@ -19,7 +20,7 @@ int main(int argc, char* argv[]) {
 
   Kokkos::parallel_for("PrintView", n, KOKKOS_LAMBDA (const int i) {
     for (int j = 0; j < m; j++) {
-      printf("woah(%d,%d) = %f\n", i, j, woah(i,j));
+      std::cout << "woah(" << i << "," << j << ") = " << woah(i,j) << std::endl;
     }
   });
   }
