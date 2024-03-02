@@ -1,10 +1,11 @@
 #include <Kokkos_Core.hpp>
 #include <cstdio>
-#include <iostream>
 
 // Problem: Make an n ∗ m View where each index equals 1000 ∗ i ∗ j
 
 int main(int argc, char* argv[]) {
+  char buffer[BUFSIZ];
+  setvbuf(stdout, buffer, _IOLBF, sizeof(buffer));
   Kokkos::initialize(argc, argv);
   {
   // set n and m, you can change these values
@@ -20,7 +21,7 @@ int main(int argc, char* argv[]) {
 
   Kokkos::parallel_for("PrintView", n, KOKKOS_LAMBDA (const int i) {
     for (int j = 0; j < m; j++) {
-      std::cout << "woah(" << i << "," << j << ") = " << woah(i,j) << std::endl;
+      printf("woah(%d,%d) = %f\n", i, j, woah(i,j));
     }
   });
   }
