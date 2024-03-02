@@ -1,0 +1,7 @@
+desul/
+*.o
+*.a
+*.h
+*.tmp
+*.hpp
+*.host
