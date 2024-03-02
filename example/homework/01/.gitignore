@@ -5,6 +5,8 @@
 *.hpp
 *.a
 *.tmp
+*.h
+*.host
 
 # ignore directory
 desul/
