@@ -22,16 +22,14 @@ int main(int argc, char* argv[]) {
     sum += the_rock(i);
   }
   double time_serial = timer.seconds();
-  timer.reset();
 
   // parallel for loop
+  Kokkos::Timer timer2;
   int sum2 = 0;
   Kokkos::parallel_reduce(n, KOKKOS_LAMBDA(const int i, int& local_sum) {
     local_sum += the_rock(i);
   }, sum2);
-  double time_parallel = timer.seconds();
-  timer.reset();
-
+  double time_parallel = timer2.seconds();
   // Output times
   printf("Serial: %f\n", time_serial);
   printf("Parallel: %f\n", time_parallel);
