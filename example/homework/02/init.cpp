@@ -4,8 +4,6 @@
 // Problem: Make an n ∗ m View where each index equals 1000 ∗ i ∗ j
 
 int main(int argc, char* argv[]) {
-  char buffer[BUFSIZ];
-  setvbuf(stdout, buffer, _IOLBF, sizeof(buffer));
   Kokkos::initialize(argc, argv);
   {
   // set n and m, you can change these values
@@ -29,6 +27,6 @@ int main(int argc, char* argv[]) {
     printf("\n");
   }
   }
-  
+
   Kokkos::finalize();
 }
