@@ -1,0 +1,10 @@
+# ignore object files
+*.o
+
+# others to ignore
+*.hpp
+*.a
+*.tmp
+
+# ignore directory
+desul/
