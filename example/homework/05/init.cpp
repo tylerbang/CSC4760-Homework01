@@ -4,16 +4,19 @@
 // Create a program that compares a parallel for loop and a standard for loop for summing rows of a View with Kokkos Timer.
 
 int main(int argc, char* argv[]) {
-  const int n = 10000;
-  const int m = 10000;
+  const int n = 1000;
+  const int m = 1000;
+  const int p = 1000;
   Kokkos::initialize(argc, argv);
   {
   // Make View and create values
-  Kokkos::View<int**> the_rock("the_rock", n, m);
+  Kokkos::View<int***> the_rock("the_rock", n, m, p);
   // Fill View with values
   Kokkos::parallel_for(n, KOKKOS_LAMBDA(const int i) {
     for (int j = 0; j < m; j++) {
-      the_rock(i,j) = i + j;
+      for (int k = 0; k < p; k++) {
+        the_rock(i,j,k) = 1;
+      }
     }
   });
   // sum loops
@@ -23,7 +26,9 @@ int main(int argc, char* argv[]) {
   int sum = 0;
   for (int i = 0; i < n; i++) {
     for (int j = 0; j < m; j++) {
-      sum += the_rock(i,j);
+      for (int k = 0; k < p; k++) {
+        sum += the_rock(i,j,k);
+      }
     }
   }
   double time_serial = timer.seconds();
@@ -33,7 +38,9 @@ int main(int argc, char* argv[]) {
   int sum2 = 0;
   Kokkos::parallel_reduce(n, KOKKOS_LAMBDA(const int i, int& local_sum) {
     for (int j = 0; j < m; j++) {
-      local_sum += the_rock(i,j);
+      for (int k = 0; k < p; k++) {
+        local_sum += the_rock(i,j,k);
+      }
     }
   }, sum2);
   double time_parallel = timer2.seconds();
