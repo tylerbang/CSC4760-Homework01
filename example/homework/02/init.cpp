@@ -14,15 +14,9 @@ int main(int argc, char* argv[]) {
   Kokkos::parallel_for(n, KOKKOS_LAMBDA (const int i) {
     for (int j = 0; j < m; j++) {
       woah(i,j) = 1000 * i * j;
-    }
-  });
-  //print values
-  for (int i = 0; i < n; i++) {
-    for (int j = 0; j < m; j++) {
       printf("%f ", woah(i,j));
     }
-    printf("\n");
-  }
+  });
   }
   Kokkos::finalize();
 }
