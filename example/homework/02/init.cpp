@@ -16,13 +16,13 @@ int main(int argc, char* argv[]) {
       woah(i,j) = 1000 * i * j;
     }
   });
-
-  // print for confirmation
-  for (int x = 0; x < n; x++) {
-    for (int d = 0; d < m; d++) {
-      printf("%f ", woah(x,d));
+  //print values
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j < m; j++) {
+      printf("%f ", woah(i,j));
     }
     printf("\n");
+  }
   }
   Kokkos::finalize();
 }
