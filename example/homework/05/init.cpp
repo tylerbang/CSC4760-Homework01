@@ -15,7 +15,7 @@ int main(int argc, char* argv[]) {
   Kokkos::parallel_for(n, KOKKOS_LAMBDA(const int i) {
     for (int j = 0; j < m; j++) {
       for (int k = 0; k < p; k++) {
-        the_rock(i,j,k) = i + j + k;
+        the_rock(i,j,k) = i * j * k;
       }
     }
   });

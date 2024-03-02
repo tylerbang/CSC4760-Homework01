@@ -22,6 +22,8 @@ int main(int argc, char* argv[]) {
       max = bottom_text(i);
     }
   }, Kokkos::Max<int>(bottom_text(0)));
+
+  printf("Max: %d\n", bottom_text(0));
   }
   Kokkos::finalize();
 }
