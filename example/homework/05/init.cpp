@@ -5,13 +5,16 @@
 
 int main(int argc, char* argv[]) {
   const int n = 1000;
+  const int m = 1000;
   Kokkos::initialize(argc, argv);
   {
   // Make View and create values
-  Kokkos::View<int*> the_rock("the_rock", n);
+  Kokkos::View<int**> the_rock("the_rock", n, m);
   // Fill View with values
   Kokkos::parallel_for(n, KOKKOS_LAMBDA(const int i) {
-    the_rock(i) = i;
+    for (int j = 0; j < m; j++) {
+      the_rock(i,j) = i + j;
+    }
   });
   // sum loops
 
@@ -19,7 +22,9 @@ int main(int argc, char* argv[]) {
   Kokkos::Timer timer;
   int sum = 0;
   for (int i = 0; i < n; i++) {
-    sum += the_rock(i);
+    for (int j = 0; j < m; j++) {
+      sum += the_rock(i,j);
+    }
   }
   double time_serial = timer.seconds();
 
@@ -27,7 +32,9 @@ int main(int argc, char* argv[]) {
   Kokkos::Timer timer2;
   int sum2 = 0;
   Kokkos::parallel_reduce(n, KOKKOS_LAMBDA(const int i, int& local_sum) {
-    local_sum += the_rock(i);
+    for (int j = 0; j < m; j++) {
+      local_sum += the_rock(i,j);
+    }
   }, sum2);
   double time_parallel = timer2.seconds();
   // Output times
