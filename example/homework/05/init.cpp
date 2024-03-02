@@ -24,10 +24,10 @@ int main(int argc, char* argv[]) {
   // Serial for loop
   Kokkos::Timer timer;
   int sum = 0;
-  for (int i = 0; i < n; i++) {
-    for (int j = 0; j < m; j++) {
-      for (int k = 0; k < p; k++) {
-        sum += the_rock(i,j,k);
+  for (int a = 0; a < n; a++) {
+    for (int b = 0; b < m; b++) {
+      for (int c = 0; c < p; c++) {
+        sum += the_rock(a,b,c);
       }
     }
   }
