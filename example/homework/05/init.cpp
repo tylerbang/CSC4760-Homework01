@@ -34,7 +34,7 @@ int main(int argc, char* argv[]) {
   double time_serial = timer.seconds();
 
   // parallel for loop
-  Kokkos::Timer timer2;
+  timer.reset();
   int sum2 = 0;
   Kokkos::parallel_reduce(n, KOKKOS_LAMBDA(const int i, int& local_sum) {
     for (int j = 0; j < m; j++) {
@@ -43,7 +43,7 @@ int main(int argc, char* argv[]) {
       }
     }
   }, sum2);
-  double time_parallel = timer2.seconds();
+  double time_parallel = timer.seconds();
   // Output times
   printf("Serial: %f\n", time_serial);
   printf("Parallel: %f\n", time_parallel);
