@@ -17,21 +17,20 @@ int main(int argc, char* argv[]) {
 
   // Serial for loop
   Kokkos::Timer timer;
-  double time_serial = timer.seconds();
   int sum = 0;
   for (int i = 0; i < n; i++) {
     sum += the_rock(i);
   }
+  double time_serial = timer.seconds();
   timer.reset();
 
   // parallel for loop
-  Kokkos::Timer timer2;
-  double time_parallel = timer2.seconds();
   int sum2 = 0;
   Kokkos::parallel_reduce(n, KOKKOS_LAMBDA(const int i, int& local_sum) {
     local_sum += the_rock(i);
   }, sum2);
-  timer2.reset();
+  double time_parallel = timer.seconds();
+  timer.reset();
 
   // Output times
   printf("Serial: %f\n", time_serial);
