@@ -19,7 +19,6 @@ int main(int argc, char* argv[]) {
   Kokkos::parallel_for(3, KOKKOS_LAMBDA(const int i) {
     for (int j = 0; j < 3; j++) {
       a(i, j) = i * 100 + j * 10;
-      printf("%d ", a(i, j));
     }
     b(i) = i * 100 + 21;
   });
