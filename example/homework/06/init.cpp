@@ -25,12 +25,13 @@ int main(int argc, char* argv[]) {
   Kokkos::fence();
   // Do a matrix add
   
-  for (int i = 0; i < 3; i++) {
+  Kokkos::parallel_for(3, KOKKOS_LAMBDA(const int i) {
     for (int j = 0; j < 3; j++) {
       a(i, j) += b(i);
     }
-  }
-
+  });
+  Kokkos::fence();
+  
   // Output addition 
   for (int i = 0; i < 3; i++) {
     for (int j = 0; j < 3; j++) {
