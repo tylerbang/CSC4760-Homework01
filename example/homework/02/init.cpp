@@ -8,26 +8,19 @@ int main(int argc, char* argv[]) {
   Kokkos::initialize(argc, argv);
   {
   // set n and m, you can change these values
-  int n = 16;
-  int m = 16;
-  int sum = 0;
+  int n = 16, m = 16;
   // Make View
   Kokkos::View<int**> woah("woah", n, m);
   // set values to 1000 * i * j;
   for(int i = 0; i < woah.extent(0); i++){
     for(int j = 0; j < woah.extent(1); j++){
-      woah(i,j) = i * j;
+      woah(i,j) = 1000 * i * j;
     }
   }
   Kokkos::fence();
-
-  Kokkos::parallel_reduce(n, KOKKOS_LAMBDA(const int i, int& local_sum) {
-    for (int j = 0; j < m; j++) {
-      local_sum += woah(i,j);
-    }
-  }, sum);
-  Kokkos::fence();
-  std::cout << "Sum: " << sum << std::endl;
+  
+  // print out the values
+  std::cout << woah(4, 4) << std::endl;
   }
   Kokkos::finalize();
 }
