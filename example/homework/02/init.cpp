@@ -21,7 +21,7 @@ int main(int argc, char* argv[]) {
   Kokkos::deep_copy(woah_h, woah);
   for (int i = 0; i < n; i++) {
     for (int j = 0; j < m; j++) {
-      Kokkos::printf("%d ", woah_h(i,j));
+      Kokkos::printf("beesechurger");
     }
     Kokkos::printf("\n");
   }
