@@ -1,5 +1,6 @@
 #include <Kokkos_Core.hpp>
 #include <cstdio>
+#include <iostream>
 
 // Problem: Make an n ∗ m View where each index equals 1000 ∗ i ∗ j
 
@@ -18,7 +19,7 @@ int main(int argc, char* argv[]) {
   }
   Kokkos::fence();
 
-  printf("woah(2,4) = %d\n", woah(2,4));
+  std::cout << woah(3,3) << std::endl;
   }
   Kokkos::finalize();
 }
