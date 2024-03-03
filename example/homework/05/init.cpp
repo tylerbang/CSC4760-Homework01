@@ -43,6 +43,7 @@ int main(int argc, char* argv[]) {
       }
     }
   }, sum2);
+  Kokkos::fence();
   double time_parallel = timer.seconds();
   // Output times
   printf("Serial: %f\n", time_serial);
