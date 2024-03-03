@@ -11,11 +11,11 @@ int main(int argc, char* argv[]) {
   // Make View
   Kokkos::View<int**> woah("woah", n, m);
   // set values to 1000 * i * j;
-  Kokkos::parallel_for(n, KOKKOS_LAMBDA (const int i) {
-    for (int j = 0; j < m; j++) {
-      woah(i,j) = 16;
+  for(int i = 0; i < woah.extent(0); i++){
+    for(int j = 0; j < woah.extent(1); j++){
+      woah(i,j) = 1000 * i * j;
     }
-  });
+  }
   Kokkos::fence();
 
   printf("woah(2,4) = %d\n", woah(2,4));
