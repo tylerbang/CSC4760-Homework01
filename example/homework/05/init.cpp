@@ -31,8 +31,8 @@ int main(int argc, char* argv[]) {
       }
     }
   }
+  Kokkos::fence();
   double time_serial = timer.seconds();
-
   // parallel for loop
   timer.reset();
   int sum2 = 0;
