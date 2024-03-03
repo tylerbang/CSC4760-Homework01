@@ -16,16 +16,9 @@ int main(int argc, char* argv[]) {
       woah(i,j) = 1000 * i * j;
     }
   });
+  Kokkos::fence();
 
-  auto woah_h = Kokkos::create_mirror_view(woah);
-  Kokkos::deep_copy(woah_h, woah);
-  for (int i = 0; i < n; i++) {
-    for (int j = 0; j < m; j++) {
-      Kokkos::printf("beesechurger");
-    }
-    Kokkos::printf("\n");
+  printf("woah(0,0) = %d\n", woah(0,0));
   }
-  }
-
   Kokkos::finalize();
 }
