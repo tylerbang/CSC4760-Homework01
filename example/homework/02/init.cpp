@@ -14,7 +14,7 @@ int main(int argc, char* argv[]) {
   // set values to 1000 * i * j;
   for(int i = 0; i < woah.extent(0); i++){
     for(int j = 0; j < woah.extent(1); j++){
-      woah(i,j) = 1000 * i * j;
+      woah(i,j) = i * j;
     }
   }
   Kokkos::fence();
