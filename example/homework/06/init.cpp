@@ -22,6 +22,7 @@ int main(int argc, char* argv[]) {
     }
     b(i) = i * 100 + 21;
   });
+  Kokkos::fence();
   // Do a matrix add
   
   for (int i = 0; i < 3; i++) {
