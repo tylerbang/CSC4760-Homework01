@@ -19,7 +19,7 @@ int main(int argc, char* argv[]) {
   }
   Kokkos::fence();
 
-  std::cout << woah(3,3) << std::endl;
+  std::cout << &woah(10,5) << std::endl;
   }
   Kokkos::finalize();
 }
