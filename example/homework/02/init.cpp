@@ -8,7 +8,8 @@ int main(int argc, char* argv[]) {
   Kokkos::initialize(argc, argv);
   {
   // set n and m, you can change these values
-  int n,m = 16;
+  int n = 16;
+  int m = 16;
   int sum = 0;
   // Make View
   Kokkos::View<int**> woah("woah", n, m);
