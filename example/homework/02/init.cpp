@@ -19,12 +19,11 @@ int main(int argc, char* argv[]) {
 
   auto woah_h = Kokkos::create_mirror_view(woah);
   Kokkos::deep_copy(woah_h, woah);
-
   for (int i = 0; i < n; i++) {
     for (int j = 0; j < m; j++) {
-      printf("%d ", woah_h(i,j));
+      Kokkos::printf("%d ", woah_h(i,j));
     }
-    printf("\n");
+    Kokkos::printf("\n");
   }
   }
 
