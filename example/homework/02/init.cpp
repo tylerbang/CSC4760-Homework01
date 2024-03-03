@@ -12,15 +12,14 @@ int main(int argc, char* argv[]) {
   // Make View
   Kokkos::View<int**> woah("woah", n, m);
   // set values to 1000 * i * j;
-  for(int i = 0; i < woah.extent(0); i++){
-    for(int j = 0; j < woah.extent(1); j++){
+  Kokkos::parallel_for(n, KOKKOS_LAMBDA(const int i) {
+    for (int j = 0; j < m; j++) {
       woah(i,j) = 1000 * i * j;
     }
-  }
+  });
   Kokkos::fence();
-  
   // print out the values
-  std::cout << woah(4, 4) << std::endl;
+  std::cout << woah(9, 2) << std::endl;
   }
   Kokkos::finalize();
 }
