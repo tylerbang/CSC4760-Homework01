@@ -23,6 +23,7 @@ int main(int argc, char* argv[]) {
     for (int j = 0; j < m; j++) {
       std::cout << woah(i,j) << " ";
     }
+  }
     std::cout << std::endl;
   }
   Kokkos::finalize();
