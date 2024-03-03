@@ -18,7 +18,7 @@ int main(int argc, char* argv[]) {
   });
   Kokkos::fence();
 
-  printf("woah(0,0) = %d\n", woah(0,0));
+  printf("woah(2,4) = %d\n", woah(2,4));
   }
   Kokkos::finalize();
 }
