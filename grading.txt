@@ -1,0 +1,35 @@
+Total: 99
+
+
+
+Q1: 5
+
+Q2: 
+
+Problem 1 : 10
+
+Problem 2 : 10
+
+	Comment: it would be nice to print the values
+
+Problem 3 : 10
+
+	Comment: it would be nice to print the view values instead of label
+
+Problem 4 : 20
+
+Problem 5 : 19 
+
+	Comment: In an effiecint parallel program, the parallel time should be less than the 	serial time 
+
+Problem 6 : 25 + (extra credit) 
+
+Q3:
+
+Problem 7 : 
+
+Problem 8 : 
+
+
+
+
